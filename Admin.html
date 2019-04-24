@@ -8,6 +8,12 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  <script src="sweetalert2.all.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
+
   <title>Admin</title>
 
   <!-- Bootstrap core CSS -->
@@ -177,6 +183,17 @@
       $("#wrapper").toggleClass("toggled");
     });
   </script>
+
+<script>
+Swal.fire({
+  title: 'Test!',
+  text: 'Dit is een test :)',
+  type: 'success',
+  confirmButtonText: 'Cool'
+})
+
+  </script>
+
 </body>
 
 </html>
