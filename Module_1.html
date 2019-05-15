@@ -106,16 +106,17 @@
                 <a class="dropdown-item" href="Module_2.html">Module 2</a>
             </li>
 
-          <li>
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Other
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="../Project-pedagogisch/Home/index.html">Home</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="Login.php">Uitloggen</a>
-            </div>
-          </li>
+            <li>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Other
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="../Project-pedagogisch/Home/index.html">Home</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="Login.php">Uitloggen</a>
+              </div>
+            </li>
           </ul>
         </div>
       </nav>
@@ -126,33 +127,29 @@
           <img src="Foto/Theorie_Lezen.jpg" width="100" height="75" />
           Theorie:
           <br>
-          <br>
-          Baby’s krijgen in de kinderopvang flesvoeding en als de ouders het aangeven ook een fruit- en/of groentehapje.
-          <br>
-          Bij het geven van deze voeding zal je rekening moeten houden met hygiëne, de hoeveelheden, de manier waarop je
-          de voeding geeft en ook hoe jij dit ergonomisch het beste kunt doen.
-          <br>
-          Tijdens deze opdracht ga je belangrijke aspecten hierover opzoeken, lezen, bekijken én praktisch oefenen.
-          <br>
-          <br>
-        </p>
+          <div class="content-output"></div>
+          <textarea class="content-input" placeholder="Your text here"></textarea>
+          <button class="save-button">Save</button>
+      </div>
+      </p>
 
-        <div class="invisible" id="makes">
-          <h1 class="mt-4" id="1__1">1.1</h1>
-          <p id="theorie_tekst">
-            <img src="Foto/Theorie_Lezen.jpg" width="100" height="75" />
-            <br>
-            Lees: NU Pedagogisch Werk basisboek: Didactiek, Communicatie en Organisatie -> vanaf het kader “Werken in de
-            praktijk” t/m Voeding (blz. 187 én blz. 188)
-            <br>
-            Zoek in het boek op wat ‘ergonomisch verantwoord werken’ is.
-          </p>
-          <h2>
-            Opdrachten
-          </h2>
-          <p>
-            Lees: NU Pedagogisch Werk basisboek: Didactiek, Communicatie en Organisatie à vanaf het kader “Werken in de praktijk” t/m Voeding (blz. 187 én blz. 188) Zoek in het boek op wat ‘ergonomisch verantwoord werken’ is.
-          </p>
+      <div class="invisible" id="makes">
+        <h1 class="mt-4" id="1__1">1.1</h1>
+        <p id="theorie_tekst">
+          <img src="Foto/Theorie_Lezen.jpg" width="100" height="75" />
+          <br>
+          Lees: NU Pedagogisch Werk basisboek: Didactiek, Communicatie en Organisatie -> vanaf het kader “Werken in de
+          praktijk” t/m Voeding (blz. 187 én blz. 188)
+          <br>
+          Zoek in het boek op wat ‘ergonomisch verantwoord werken’ is.
+        </p>
+        <h2>
+          Opdrachten
+        </h2>
+        <p>
+          Lees: NU Pedagogisch Werk basisboek: Didactiek, Communicatie en Organisatie à vanaf het kader “Werken in de
+          praktijk” t/m Voeding (blz. 187 én blz. 188) Zoek in het boek op wat ‘ergonomisch verantwoord werken’ is.
+        </p>
       </div>
     </div>
     <!-- /#page-content-wrapper -->
@@ -181,6 +178,24 @@
         $("#makes").removeClass("invisible");
       });
     });
+  </script>
+  <script type="text/javascript">
+
+    var input_textarea = document.querySelector('.content-input');
+    var output_div = document.querySelector('.content-output');
+    var save_button = document.querySelector('.save-button');
+
+    save_button.addEventListener('click', updateOutput);
+
+    output_div.textContent = localStorage.getItem('content');
+    input_textarea.value = localStorage.getItem('content');
+
+    function updateOutput() {
+      localStorage.setItem('content', input_textarea.value);
+
+      output_div.textContent = input_textarea.value;
+    }
+
   </script>
 </body>
 
