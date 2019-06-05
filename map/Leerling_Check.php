@@ -45,7 +45,6 @@ if ($NotAdmin == 0) {
             header("Refresh: 0; url=../Admin.html");
         }
     }
-    
     else {
         echo "Jouw login en/of wachtwoord klopt niet";
     }
