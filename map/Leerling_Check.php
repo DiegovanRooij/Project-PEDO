@@ -15,8 +15,8 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$PSnummer = $_POST['txtUsername'];
-$WachtWoord = $_POST['txtPassword'];
+$PSnummer = $_POST["username"];
+$WachtWoord = $_POST["pass"];
 
 #Check of de gebruiker een leerling is of een leraar!
 $Leerling_Leraar = "SELECT Rights from gebruikers where Gebruikersnaam = '$PSnummer' ";
@@ -33,15 +33,24 @@ if ($Check = mysqli_query($conn, $Leerling_Leraar)) {
 $Sql = "SELECT * FROM gebruikers WHERE Gebruikersnaam = '$PSnummer' AND Wachtwoord = '$WachtWoord' ";
 $Result = mysqli_query($conn, $Sql);
 
-if ($Admin == 0) {
-    if (mysqli_num_rows($Result) > 0) {
+
+if ($NotAdmin == 0) {
+    if (mysqli_num_rows($Result) == 0) {
         while ($Row = mysqli_fetch_array($Result,  MYSQLI_NUM)) {
             header("Refresh: 0; url=../Home/index.html");
         }
-    } else {
+    }
+    else if (mysqli_num_rows($Result) == 1) {
+        while ($Row = mysqli_fetch_array($Result,  MYSQLI_NUM)) {
+            header("Refresh: 0; url=../Admin.html");
+        }
+    }
+    
+    else {
         echo "Jouw login en/of wachtwoord klopt niet";
     }
 }
 else{
+    echo "Leerling";
     header("refresh:0;url=../Home/index.html");
 }
