@@ -114,16 +114,37 @@
       <div class="container-fluid">
         <h1 class="mt-4">Module 2</h1>
           <p>
-            <img src="Foto/Theorie_Lezen.jpg" width="100" height="75"/>
-            Theorie: 
-            <br>
-            <br>
-            Baby’s krijgen in de kinderopvang flesvoeding en als de ouders het aangeven ook een fruit- en/of groentehapje.
-            <br>
-            Bij het geven van deze voeding zal je rekening moeten houden met hygiëne, de hoeveelheden, de manier waarop je de voeding geeft en ook hoe jij dit ergonomisch het beste kunt doen. 
-            <br>
-            Tijdens deze opdracht ga je belangrijke aspecten hierover opzoeken, lezen, bekijken én praktisch oefenen. 
-            <br>
+            <form action="" method="post" enctype="multipart/form-data">
+
+              <input type="file" name="file" size="50" />
+          
+              <br />
+          
+              <input type="submit" value="Upload" />
+          
+          </form>
+          <?php
+          $targetfolder = "pdf/";
+
+          $targetfolder = $targetfolder . basename( $_FILES['file']['name']) ;
+         
+         if(move_uploaded_file($_FILES['file']['tmp_name'], $targetfolder))
+         
+          {
+          echo"";
+          }
+         
+          else {
+         
+          echo "";
+         
+          }
+             $pdf = $_FILES['file']['name'];
+          //-----------------------------------------------------------------------------------
+            $file =  basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
+           echo"<iframe src='pdf/".basename($file,".php").".pdf' ><iframe>";
+
+          ?>
             
             <br>
             
