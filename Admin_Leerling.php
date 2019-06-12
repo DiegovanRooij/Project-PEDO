@@ -20,7 +20,8 @@ $sql = "INSERT INTO gebruikers (Gebruikersnaam, Wachtwoord, Rights)
 VALUES ('$usernames', '$ww', 1)";
 
 if (mysqli_query($conn, $sql)) {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    echo "Leerling toegevoegd";
+    header("Refresh: 1; url=Admin.html");
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
