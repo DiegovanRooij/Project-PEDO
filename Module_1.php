@@ -1,3 +1,20 @@
+<?php 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "project_pedagogisch_medewerker";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
