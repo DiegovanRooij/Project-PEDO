@@ -11,14 +11,16 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$username = $_POST[""];
-$wachtwoord = $_POST[""];
+$usernames = $_POST["Leerling_add"];
+$ww = $_POST["leerling_add_wachtwoord"];
 
-$sql = "INSERT INTO gebruikers (GebruikersID, Gebruikersnaam, Wachtwoord, Rights)
-VALUES ( ,'$username', '$wachtwoord', 1)";
+echo $usernames. $ww;
+
+$sql = "INSERT INTO gebruikers (Gebruikersnaam, Wachtwoord, Rights)
+VALUES ('$usernames', '$ww', 1)";
 
 if (mysqli_query($conn, $sql)) {
-    echo "Nieuwe student toegevoegd";
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
