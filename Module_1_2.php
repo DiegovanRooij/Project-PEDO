@@ -1,16 +1,29 @@
-<?php 
+<?php
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "project_pedagogisch_medewerker";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
 
+$sql = "SELECT id, firstname, lastname FROM MyGuests";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
+$conn->close();
+?>
 
 ?>
 
@@ -57,8 +70,8 @@ if (!$conn) {
           <a><i class="fa fa-globe fa-lg"></i> 1.1</a>
         </li>
         <ul class="sub-menu collapse" id="eenpunteen">
-          <a href="Module_1_1_Theorie.php" id="theorie_1">Theorie</button><br>
-            <a href="Module_1_1_Opdrachten.php">Opdrachten</a>
+          <a href="Module_1.1.php" id="theorie_1">Theorie</button><br>
+            <a href="Module_1.2.php">Opdrachten</a>
         </ul>
 
         <li data-toggle="collapse" data-target="#eenpunttwee" class="list-group-item list-group-item-action bg-white">
@@ -141,17 +154,11 @@ if (!$conn) {
       </nav>
 
       <div class="container-fluid">
-        <h1 class="mt-4" id="Module_1">Module 1</h1>
+        <h1 class="mt-4" id="Module_1">Module 1.2</h1>
         <p id="module_1">
-          <img src="Foto/Theorie_Lezen.jpg" width="100" height="75" />
-          Theorie:
-          <br>
-          Baby’s krijgen in de kinderopvang flesvoeding en als de ouders het aangeven ook een fruit- en/of groentehapje. 
-          <br>
-          Bij het geven van deze voeding zal je rekening moeten houden met hygiëne, de hoeveelheden, de manier waarop je de voeding geeft en ook hoe jij dit ergonomisch het beste kunt doen. 
-          <br>
-          Tijdens deze opdracht ga je belangrijke aspecten hierover opzoeken, lezen, bekijken én praktisch oefenen. 
+<img src="Foto/Video_bekijken" width="100" height="75"/>
 
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/-0AvaTgBE7c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       </p>
 
@@ -162,8 +169,7 @@ if (!$conn) {
   <!-- /#wrapper -->
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
   <!-- Menu Toggle Script -->
 
